@@ -1,13 +1,35 @@
+// Initialization
 var c = document.getElementById("can");
 var ctx = c.getContext('2d');
 ctx.fillStyle = '#C0FFEE';
+
+// Functions
 var createRect = function(e){
-    ctx.fillRect(e.clientX, e.clientY, 50, 50);
-    console.log('he');
+    var x = e.clientX - c.offsetLeft;
+    var y = e.clientY - c.offsetTop;
+    ctx.fillRect(x, y, 50, 50);
+    //console.log('x: ' + x + '\ty: ' + y);
 };
-c.addEventListener('click', createRect);
-b = document.getElementById('clear');
-var d = function(e){
+var clear = function(e){
     ctx.clearRect(0,0,500,500);
 };
-b.addEventListener('click', d);
+var fillrandom = function(e) {
+    var origColor = ctx.fillStyle;
+    var newColor = 'rgb(' + Math.floor(Math.random() * 256) + ',' +
+	Math.floor(Math.random() * 256) + ',' + 
+	Math.floor(Math.random() * 256) + ')';
+    ctx.fillStyle = newColor;
+    ctx.fillRect(0,0,500,500);
+    ctx.fillStyle = origColor;
+    console.log(newColor);
+}
+
+// Adding Event Listeners
+c.addEventListener('click', createRect);
+
+b = document.getElementById('clear');
+b.addEventListener('click', clear);
+rando = document.getElementById('fillrandom');
+rando.addEventListener('click', fillrandom);
+
+console.log("Loaded js.");
