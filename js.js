@@ -10,6 +10,20 @@ var createRect = function(e){
     ctx.fillRect(x, y, 50, 50);
     //console.log('x: ' + x + '\ty: ' + y);
 };
+var connect = function(e){
+
+    var x = e.clientX - c.offsetLeft;
+    var y = e.clientY - c.offsetTop;
+
+    ctx.lineTo(x, y)
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(x, y, 10, 0, Math.PI * 2 );
+    
+    ctx.fill(); 
+    //console.log('x: ' + x + '\ty: ' + y);
+};
+
 var clear = function(e){
     ctx.clearRect(0,0,500,500);
 };
@@ -25,7 +39,7 @@ var fillrandom = function(e) {
 }
 
 // Adding Event Listeners
-c.addEventListener('click', createRect);
+c.addEventListener('click', connect);
 
 b = document.getElementById('clear');
 b.addEventListener('click', clear);
