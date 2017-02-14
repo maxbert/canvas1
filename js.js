@@ -12,13 +12,14 @@ var createRect = function(e){
 };
 var connect = function(e){
 
-    var x = e.clientX - c.offsetLeft;
-    var y = e.clientY - c.offsetTop;
+    var x = e.offsetX;
+    var y = e.offsetY;
 
     ctx.lineTo(x, y)
     ctx.stroke();
     ctx.beginPath();
     ctx.arc(x, y, 10, 0, Math.PI * 2 );
+    ctx.moveTo(x,y);
     
     ctx.fill(); 
     //console.log('x: ' + x + '\ty: ' + y);
