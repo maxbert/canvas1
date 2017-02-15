@@ -11,24 +11,26 @@ var createRect = function(e){
     //console.log('x: ' + x + '\ty: ' + y);
 };
 var connect = function(e){
-
     var x = e.offsetX;
     var y = e.offsetY;
 
-    ctx.lineTo(x, y)
+    ctx.lineTo(x, y);
     ctx.stroke();
+    ctx.fill();
     ctx.beginPath();
     ctx.arc(x, y, 10, 0, Math.PI * 2 );
     ctx.moveTo(x,y);
-    
-    ctx.fill(); 
+    ctx.stroke();
+    ctx.fill();
     //console.log('x: ' + x + '\ty: ' + y);
 };
 
 var clear = function(e){
     ctx.clearRect(0,0,500,500);
+    ctx.beginPath();
 };
 var fillrandom = function(e) {
+    clear();
     var origColor = ctx.fillStyle;
     var newColor = 'rgb(' + Math.floor(Math.random() * 256) + ',' +
 	Math.floor(Math.random() * 256) + ',' + 
